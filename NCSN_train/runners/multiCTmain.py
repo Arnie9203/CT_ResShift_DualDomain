@@ -36,8 +36,11 @@ class FanBeam():
                                                   500)
         self.projGeom580 = astra.create_proj_geom('fanflat', 0.35, 580, np.linspace(0, np.pi, 580, endpoint=False), 500,
                                                   500)
-        self.volGeom = astra.create_vol_geom(512, 512, (-512 / 2), (512 / 2),
-                                             (-512 / 2), (512 / 2))
+        # self.volGeom = astra.create_vol_geom(512, 512, (-512 / 2), (512 / 2),
+        #                                      (-512 / 2), (512 / 2))
+
+        self.volGeom = astra.create_vol_geom(256, 256, (-256 / 2), (256 / 2),
+                                     (-256 / 2), (256 / 2))
 
         self.projGeomLACT90 = astra.create_proj_geom('fanflat', 0.7, 1500,
                                                      np.linspace(0, np.pi / 2+np.pi/12, 480, endpoint=False), 2000, 500)

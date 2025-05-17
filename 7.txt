@@ -1,0 +1,56 @@
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=512, channels=10, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/train
+[testset_loader] Found 458 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=256, channels=1, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/train
+[testset_loader] Found 458 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=256, channels=1, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/train
+[testset_loader] Found 458 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=256, channels=1, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/train
+[testset_loader] Found 458 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=256, channels=1, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/train
+[testset_loader] Found 458 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=256, channels=1, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/train
+[testset_loader] Found 458 samples in /home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+👼
+scores shape: torch.Size([1, 336400])
+target shape: torch.Size([1, 3364000])
+used_sigmas shape: torch.Size([1, 1, 1, 1])

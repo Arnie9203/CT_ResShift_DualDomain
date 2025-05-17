@@ -1,0 +1,1510 @@
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=512, channels=10, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 10 samples in /home/arnie/Project/DCDS-Dual-domain_Collaborative_Diffusion_Sampling/data/image_domain
+[testset_loader] Found 10 samples in /home/arnie/Project/DCDS-Dual-domain_Collaborative_Diffusion_Sampling/data/image_domain
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=512, channels=10, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 10 samples in /home/arnie/Project/DCDS-Dual-domain_Collaborative_Diffusion_Sampling/data/image_domain
+[testset_loader] Found 10 samples in /home/arnie/Project/DCDS-Dual-domain_Collaborative_Diffusion_Sampling/data/image_domain
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+💎💎💎
+🍺 score: DataParallel(
+  (module): CondRefineNetDilated(
+    (act): ELU(alpha=1.0)
+    (begin_conv): Conv2d(10, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (normalizer): ConditionalInstanceNorm2dPlus(
+      (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (embed): Embedding(12, 192)
+    )
+    (end_conv): Conv2d(64, 10, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (res1): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(10, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (shortcut): Conv2d(10, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(10, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 30)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+      )
+    )
+    (res2): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (conv2): ConvMeanPool(
+          (conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (shortcut): ConvMeanPool(
+          (conv): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+        )
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+    )
+    (res3): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (shortcut): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+    )
+    (res4): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (shortcut): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+    )
+    (refine1): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0): CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+    (refine2): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0-1): 2 x CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (msf): CondMSFBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+    (refine3): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0-1): 2 x CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (msf): CondMSFBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+    (refine4): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0-1): 2 x CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (1_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (1_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (2_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (2_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (2_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (2_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (2_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (2_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (3_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (3_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (3_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (3_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (msf): CondMSFBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+        )
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+  )
+)
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+💎💎💎
+🍺 score: DataParallel(
+  (module): CondRefineNetDilated(
+    (act): ELU(alpha=1.0)
+    (begin_conv): Conv2d(10, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (normalizer): ConditionalInstanceNorm2dPlus(
+      (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (embed): Embedding(12, 192)
+    )
+    (end_conv): Conv2d(64, 10, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (res1): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(10, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (shortcut): Conv2d(10, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(10, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 30)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+      )
+    )
+    (res2): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (conv2): ConvMeanPool(
+          (conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (shortcut): ConvMeanPool(
+          (conv): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+        )
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+    )
+    (res3): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (shortcut): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(2, 2), dilation=(2, 2))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+    )
+    (res4): ModuleList(
+      (0): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (shortcut): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+      (1): ConditionalResidualBlock(
+        (non_linearity): ELU(alpha=1.0)
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize2): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (normalize1): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+      )
+    )
+    (refine1): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0): CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+    (refine2): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0-1): 2 x CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 384)
+        )
+        (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (msf): CondMSFBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+    (refine3): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0-1): 2 x CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (1_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_1_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+          (2_2_conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (msf): CondMSFBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 384)
+          )
+        )
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+    (refine4): CondRefineBlock(
+      (adapt_convs): ModuleList(
+        (0-1): 2 x CondRCUBlock(
+          (1_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (1_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (1_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_1_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (2_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (2_2_norm): ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+          (2_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (act): ELU(alpha=1.0)
+        )
+      )
+      (output_convs): CondRCUBlock(
+        (1_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (1_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (2_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (2_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (2_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (2_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (3_1_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (3_1_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (3_2_norm): ConditionalInstanceNorm2dPlus(
+          (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+          (embed): Embedding(12, 192)
+        )
+        (3_2_conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (act): ELU(alpha=1.0)
+      )
+      (msf): CondMSFBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+        )
+      )
+      (crp): CondCRPBlock(
+        (convs): ModuleList(
+          (0-1): 2 x Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        )
+        (norms): ModuleList(
+          (0-1): 2 x ConditionalInstanceNorm2dPlus(
+            (instance_norm): InstanceNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+            (embed): Embedding(12, 192)
+          )
+        )
+        (maxpool): AvgPool2d(kernel_size=5, stride=1, padding=2)
+        (act): ELU(alpha=1.0)
+      )
+    )
+  )
+)
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+Namespace(model='ncsn')
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Namespace(training=Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), data=Namespace(dataset='AAPM', image_size=512, channels=10, logit_transform=False, random_flip=False), model=Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), optim=Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), device=device(type='cuda'))
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+args.runner: AapmRunnerdata_10C
+train
+[trainset_loader] Found 10 samples in /home/arnie/Project/DCDS-Dual-domain_Collaborative_Diffusion_Sampling/data/image_domain
+[testset_loader] Found 10 samples in /home/arnie/Project/DCDS-Dual-domain_Collaborative_Diffusion_Sampling/data/image_domain
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm
+torch.Size([1, 10, 580, 580])
+👋👋👋 dsm

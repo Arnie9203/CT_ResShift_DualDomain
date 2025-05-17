@@ -1,0 +1,30 @@
+# aapm_img.yml — 图像域 (image domain) 训练配置
+training:
+  batch_size: 1
+  n_epochs: 500000
+  n_iters: 100001
+  ngpu: 0,1
+  snapshot_freq: 1000
+  algo: "dsm"
+  anneal_power: 2.0
+
+data:
+  dataset: "AAPM"          # 图像域数据集
+  image_size: 256         # 重建图像大小 256x256
+  channels: 10              # 单通道 CT 切片
+  logit_transform: false
+  random_flip: false
+
+model:
+  sigma_begin: 1
+  sigma_end: 0.01
+  num_classes: 12
+  batch_norm: false
+  ngf: 64                  # UNet 里 base channel 数量
+
+optim:
+  weight_decay: 0.000
+  optimizer: "Adam"
+  lr: 0.001
+  beta1: 0.9
+  amsgrad: false

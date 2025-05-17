@@ -1,0 +1,14 @@
+INFO - aapm_runner_traindataCT_10_noconv.py - 2025-05-17 13:26:31,550 - Weights & Biases initialized successfully.
+INFO - aapm_runner_traindataCT_10_noconv.py - 2025-05-17 13:26:31,550 - Loading AAPM dataset using custom loaders.
+[trainset_loader] Found 1920 samples in /home/arnie/Desktop/npy_256x256_flattened
+[testset_loader] Found 458 samples in /home/arnie/Desktop/npy_256x256_flattened_test
+INFO - aapm_runner_traindataCT_10_noconv.py - 2025-05-17 13:26:31,552 - Using device: cuda
+INFO - aapm_runner_traindataCT_10_noconv.py - 2025-05-17 13:26:31,615 - Starting Epoch 1/500000
+INFO - aapm_runner_traindataCT_10_noconv.py - 2025-05-17 13:26:31,616 - FanBeam.FP called with data shape: (256, 256), param: 580
+INFO - aapm_runner_traindataCT_10_noconv.py - 2025-05-17 13:26:31,648 - Dummy anneal_dsm_score_estimation called
+ERROR - main_ImageNet.py - 2025-05-17 13:26:31,794 - Traceback (most recent call last):
+  File "/home/arnie/Project/CT_ResShift_DualDomain/NCSN_train/main_ImageNet.py", line 127, in main
+    runner.train()
+  File "/home/arnie/Project/CT_ResShift_DualDomain/NCSN_train/runners/aapm_runner_traindataCT_10_noconv.py", line 448, in train
+    if current_step % self.config.training.eval_freq == 0: # Use a separate eval_freq
+AttributeError: 'Namespace' object has no attribute 'eval_freq'

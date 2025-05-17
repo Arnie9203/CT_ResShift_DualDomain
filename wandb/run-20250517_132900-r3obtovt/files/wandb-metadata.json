@@ -1,0 +1,52 @@
+{
+  "os": "Linux-6.11.0-25-generic-x86_64-with-glibc2.39",
+  "python": "CPython 3.9.21",
+  "startedAt": "2025-05-17T05:29:00.480197Z",
+  "args": [
+    "--runner",
+    "AapmRunnerdata_10C",
+    "--config",
+    "aapm_img.yml",
+    "--doc",
+    "AapmCT_10C",
+    "--image_folder",
+    "output"
+  ],
+  "program": "/home/arnie/Project/CT_ResShift_DualDomain/separate_ImageNet.py",
+  "codePath": "separate_ImageNet.py",
+  "git": {
+    "remote": "https://github.com/Arnie9203/CT_ResShift_DualDomain.git",
+    "commit": "407b80354b99545e894e95825dbca8e5c4e5855f"
+  },
+  "email": "yihaochen0513@gmail.com",
+  "root": "/home/arnie/Project/CT_ResShift_DualDomain",
+  "host": "arnie-Z690",
+  "executable": "/home/arnie/.local/share/mamba/envs/dcds/bin/python",
+  "codePathLocal": "separate_ImageNet.py",
+  "cpu_count": 24,
+  "cpu_count_logical": 32,
+  "gpu": "NVIDIA GeForce RTX 4090 D",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "982240026624",
+      "used": "81854427136"
+    }
+  },
+  "memory": {
+    "total": "134812319744"
+  },
+  "cpu": {
+    "count": 24,
+    "countLogical": 32
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "memoryTotal": "25757220864",
+      "cudaCores": 14592,
+      "architecture": "Ada"
+    }
+  ],
+  "cudaVersion": "12.4"
+}

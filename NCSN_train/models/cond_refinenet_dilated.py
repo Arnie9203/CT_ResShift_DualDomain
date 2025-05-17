@@ -27,6 +27,7 @@ class ConditionalBatchNorm2d(nn.Module):
         self.bias = bias
         self.bn = nn.BatchNorm2d(num_features, affine=False)
         if self.bias:
+            # 	输出维度是 num_features * 2，一半用来表示缩放因子 gamma，另一半用来表示偏置 beta。
             self.embed = nn.Embedding(num_classes, num_features * 2)
             self.embed.weight.data[:, :num_features].uniform_()  # Initialise scale at N(1, 0.02)
             self.embed.weight.data[:, num_features:].zero_()  # Initialise bias at 0

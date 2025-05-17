@@ -2,7 +2,7 @@
 data: !!python/object:argparse.Namespace
   channels: 10
   dataset: AAPM
-  image_size: 512
+  image_size: 256
   logit_transform: false
   random_flip: false
 model: !!python/object:argparse.Namespace

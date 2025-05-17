@@ -9,7 +9,7 @@ training:
 
 data:
   dataset: "AAPM"
-  image_size: 512
+  image_size: 256
   channels: 10
   logit_transform: false
   random_flip: false

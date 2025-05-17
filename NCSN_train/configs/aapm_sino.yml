@@ -1,0 +1,30 @@
+# aapm_sino.yml — 正弦域 (sinogram domain) 训练配置
+training:
+  batch_size: 1
+  n_epochs: 500000
+  n_iters: 100001
+  ngpu: 0,1
+  snapshot_freq: 1000
+  algo: "dsm"
+  anneal_power: 2.0
+
+data:
+  dataset: "AAPM_SINO"     # 正弦图数据集 （在 runner 里会切换到加载 sinogram 的逻辑）
+  image_size: 580          # sinogram 大小 580×580
+  channels: 1              # 单通道 sinogram
+  logit_transform: false
+  random_flip: false
+
+model:
+  sigma_begin: 1
+  sigma_end: 0.01
+  num_classes: 12
+  batch_norm: false
+  ngf: 64                  # UNet 里 base channel 数量
+
+optim:
+  weight_decay: 0.000
+  optimizer: "Adam"
+  lr: 0.001
+  beta1: 0.9
+  amsgrad: false

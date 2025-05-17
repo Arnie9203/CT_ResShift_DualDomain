@@ -25,12 +25,14 @@ def parse_args_and_config():
     parser.add_argument('-o', '--image_folder', type=str, default='images', help="The directory of image outputs")
 
     args = parser.parse_args()
-    run_id = str(os.getpid())
-    run_time = time.strftime('%Y-%b-%d-%H-%M-%S')
+    # print(f'🤡 args: {args}')
+    # run_id = str(os.getpid())
+    # run_time = time.strftime('%Y-%b-%d-%H-%M-%S')
     # args.doc = '_'.join([args.doc, run_id, run_time])
     args.log = os.path.join(args.run, 'logs', args.doc)
     # parse config file
     if not args.test:
+        # print(f'NO TEST!!!')
         with open(os.path.join('NCSN_train/configs', args.config), 'r') as f:
             config = yaml.unsafe_load(f)
         new_config = dict2namespace(config)
@@ -40,8 +42,12 @@ def parse_args_and_config():
         new_config = config
 
     if not args.test:
+        # print("1️⃣")
         if not args.resume_training:
+            # print("2️⃣")
             if os.path.exists(args.log):
+                # print("3️⃣")
+                # print(f'args.log: {args.log}')
                 shutil.rmtree(args.log)
             os.makedirs(args.log)
 
@@ -51,6 +57,7 @@ def parse_args_and_config():
         # setup logger
         level = getattr(logging, args.verbose.upper(), None)
         if not isinstance(level, int):
+            # print("4️⃣")
             raise ValueError('level {} not supported'.format(args.verbose))
 
         handler1 = logging.StreamHandler()
@@ -113,11 +120,13 @@ def main():
     print("<" * 80)
 
     try:
-        print(args.runner)
+        print(f'args.runner: {args.runner}')
         runner = eval(args.runner)(args, config)
         if not args.test:
+            # print("👌")
             runner.train()
         else:
+            # print("⌚️")
             runner.test()
     except:
         logging.error(traceback.format_exc())

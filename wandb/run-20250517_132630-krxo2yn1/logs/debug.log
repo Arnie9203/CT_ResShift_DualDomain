@@ -1,0 +1,456 @@
+2025-05-17 13:26:30,344 INFO    MainThread:304384 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_setup.py:_flush():70] Configure stats pid to 304384
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_setup.py:_flush():70] Loading settings from /home/arnie/.config/wandb/settings
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_setup.py:_flush():70] Loading settings from /home/arnie/Project/CT_ResShift_DualDomain/wandb/settings
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /home/arnie/Project/CT_ResShift_DualDomain/wandb/run-20250517_132630-krxo2yn1/logs/debug.log
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /home/arnie/Project/CT_ResShift_DualDomain/wandb/run-20250517_132630-krxo2yn1/logs/debug-internal.log
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_init.py:init():852] calling init triggers
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'runner': 'AapmRunnerdata_10C', 'config': 'aapm_img.yml', 'seed': 1234, 'run': 'run', 'doc': 'AapmCT_10C', 'comment': '', 'verbose': 'info', 'test': False, 'resume_training': False, 'image_folder': 'output', 'log': 'run/logs/AapmCT_10C', 'training': Namespace(batch_size=1, n_epochs=500000, n_iters=100001, ngpu='0,1', snapshot_freq=1000, algo='dsm', anneal_power=2.0), 'data': Namespace(dataset='AAPM', image_size=256, channels=10, logit_transform=False, random_flip=False), 'model': Namespace(sigma_begin=1, sigma_end=0.01, num_classes=12, batch_norm=False, ngf=64), 'optim': Namespace(weight_decay=0.0, optimizer='Adam', lr=0.001, beta1=0.9, amsgrad=False), 'device': device(type='cuda'), '_wandb': {}}
+2025-05-17 13:26:30,345 INFO    MainThread:304384 [wandb_init.py:init():893] starting backend
+2025-05-17 13:26:30,346 INFO    MainThread:304384 [wandb_init.py:init():897] sending inform_init request
+2025-05-17 13:26:30,362 INFO    MainThread:304384 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-05-17 13:26:30,362 INFO    MainThread:304384 [wandb_init.py:init():907] backend started and connected
+2025-05-17 13:26:30,368 INFO    MainThread:304384 [wandb_init.py:init():1005] updated telemetry
+2025-05-17 13:26:30,389 INFO    MainThread:304384 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-05-17 13:26:31,472 INFO    MainThread:304384 [wandb_init.py:init():1104] starting run threads in backend
+2025-05-17 13:26:31,549 INFO    MainThread:304384 [wandb_run.py:_console_start():2573] atexit reg
+2025-05-17 13:26:31,549 INFO    MainThread:304384 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2025-05-17 13:26:31,549 INFO    MainThread:304384 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2025-05-17 13:26:31,549 INFO    MainThread:304384 [wandb_run.py:_redirect():2513] Redirects installed.
+2025-05-17 13:26:31,550 INFO    MainThread:304384 [wandb_init.py:init():1150] run started, returning control to user process
+2025-05-17 13:26:31,614 INFO    MainThread:304384 [wandb_watch.py:_watch():71] Watching
+2025-05-17 13:26:31,943 INFO    MsgRouterThr:304384 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.
+2025-05-17 13:28:00,012 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,015 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,016 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,016 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,016 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,017 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,018 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,018 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,018 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,019 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,020 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,020 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,020 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,020 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,020 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-05-17 13:28:00,020 ERROR   MainThread:304384 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/arnie/.local/share/mamba/envs/dcds/lib/python3.9/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe

@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     if parsed.model == 'ncsn':
         ncsn.main()
-    elif parsed.model == 'glow':
-        glow.main()
+    # elif parsed.model == 'glow':
+    #     glow.main()
     else:
         print('Unknown model \'{}\': please select a model from the list: {}'.format(parsed.model, ['ncsn','glow']))
