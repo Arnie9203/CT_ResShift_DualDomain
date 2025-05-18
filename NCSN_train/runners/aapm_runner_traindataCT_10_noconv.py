@@ -31,7 +31,9 @@ randomData = [60, 120, 240]
 
 class trainset_loader(Dataset):
     def __init__(self):
-        data_dir = "/home/arnie/Desktop/npy_256x256_flattened"
+        data_dir = "/home/arnie/Desktop/npy_256x256_flattened_train_sino"
+        print("🐦")
+        print(f'data_dir: {data_dir}')
         self.files_A = sorted(glob.glob(os.path.join(data_dir, '*.npy')))
         print(f"[trainset_loader] Found {len(self.files_A)} samples in {data_dir}")
         if len(self.files_A) == 0:
@@ -54,7 +56,9 @@ class trainset_loader(Dataset):
 
 class testset_loader(Dataset):
     def __init__(self):
-        data_dir = "/home/arnie/Desktop/npy_256x256_flattened_test"
+        data_dir = "/home/arnie/Desktop/npy_256x256_flattened_val_sino"
+        print('🤡')
+        print(f'data_dir: {data_dir}')
         self.files_A = sorted(glob.glob(os.path.join(data_dir, '*.npy')))
         print(f"[testset_loader] Found {len(self.files_A)} samples in {data_dir}")
         if len(self.files_A) == 0:
@@ -167,7 +171,7 @@ class AapmRunnerdata_10C():
 
         # 恢复训练
         if self.args.resume_training:
-            states = torch.load(os.path.join(self.args.log, 'checkpoint_43000.pth'))
+            states = torch.load(os.path.join(self.args.log, 'checkpoint_10000.pth'))
             score.load_state_dict(states[0])
             optimizer.load_state_dict(states[1])
             step = 43000

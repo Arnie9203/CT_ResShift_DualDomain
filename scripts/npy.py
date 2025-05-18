@@ -3,8 +3,8 @@ import numpy as np
 from tqdm import tqdm
 
 # 输入和输出路径
-input_dir = "/home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_img_32views/test"
-output_dir = "/home/arnie/Desktop/npy_256x256_flattened_test"
+input_dir = "/home/arnie/Desktop/CT_Datasets/AAPM/3mm B30/all_sino_64views/val"
+output_dir = "/home/arnie/Desktop/npy_256x256_flattened_val_sino"
 
 # 创建目标文件夹
 os.makedirs(output_dir, exist_ok=True)
@@ -16,9 +16,9 @@ for fname in tqdm(npy_files, desc="Processing"):
     path = os.path.join(input_dir, fname)
     data = np.load(path)
 
-    if data.shape == (1, 256, 256):
+    if data.shape == (1, 64, 512):
         data = data.squeeze(0)  # 去掉最前面的 1 维 → (256, 256)
-    elif data.shape != (256, 256):
+    elif data.shape != (64, 512):
         print(f"⚠️ 跳过 {fname}，因为维度是 {data.shape}")
         continue
 
