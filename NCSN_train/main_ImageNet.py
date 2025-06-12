@@ -1,138 +1,315 @@
-import argparse
-import traceback
-import time
-import shutil
-import logging
-import yaml
 import sys
 import os
-import torch
 import numpy as np
-from .runners import *
+from numpy import matlib
+from .loadData import loadData
+from scipy.interpolate import interpn, griddata, interp2d
+from PIL import Image
+import matplotlib.pyplot as plt
+from scipy.signal import medfilt2d
+import cv2
+import time
+import astra
+import scipy.io as sio
+from .datamaking import datamaking_test
+from torch.utils.data import DataLoader
+from .compose import compose
+import shutil
 
+class FanBeam():
+    def __init__(self):
+        # --- projection geometries ---
+        self.projGeom29     = astra.create_proj_geom('fanflat', 0.35, 580, np.linspace(0, np.pi,   29, endpoint=False), 500, 500)
+        self.projGeom30     = astra.create_proj_geom('fanflat', 0.35, 240, np.linspace(0, np.pi,   30, endpoint=False), 500, 500)
+        self.projGeom60     = astra.create_proj_geom('fanflat', 0.35, 240, np.linspace(0, np.pi,   60, endpoint=False), 500, 500)
+        self.projGeom120    = astra.create_proj_geom('fanflat', 0.35, 240, np.linspace(0, np.pi,  120, endpoint=False), 500, 500)
+        self.projGeom240    = astra.create_proj_geom('fanflat', 0.35, 240, np.linspace(0, np.pi,  240, endpoint=False), 500, 500)
+        self.projGeom480    = astra.create_proj_geom('fanflat', 0.35, 240, np.linspace(0, np.pi,  480, endpoint=False), 500, 500)
+        self.projGeom580    = astra.create_proj_geom('fanflat', 0.35, 580, np.linspace(0, np.pi,  580, endpoint=False), 500, 500)
 
-def parse_args_and_config():
-    parser = argparse.ArgumentParser(description=globals()['__doc__'])
-    parser.add_argument('--runner', type=str, default='Aapm_Runner_CTtest_10_noconv', help='The runner to execute')
-    parser.add_argument('--config', type=str, default='aapm_10C.yml', help='Path to the config file')
-    parser.add_argument('--seed', type=int, default=1234, help='Random seed')
-    parser.add_argument('--run', type=str, default='run', help='Path for saving running related data.')
-    parser.add_argument('--doc', type=str, default='AapmCT_10C', help='A string for documentation purpose')
-    parser.add_argument('--comment', type=str, default='', help='A string for experiment comment')
-    parser.add_argument('--verbose', type=str, default='info', help='Verbose level: info | debug | warning | critical')
-    parser.add_argument('--test', action='store_true', help='Whether to test the model', default=False)
-    parser.add_argument('--resume_training', action='store_true', help='Whether to resume training')
-    parser.add_argument('-o', '--image_folder', type=str, default='images', help="The directory of image outputs")
+        # few‐view 32/64/128 geometries with 512 channels
+        self.projGeom32_512  = astra.create_proj_geom('fanflat', 0.35, 512, np.linspace(0, np.pi,  32, endpoint=False), 500, 500)
+        self.projGeom64_512  = astra.create_proj_geom('fanflat', 0.35, 512, np.linspace(0, np.pi,  64, endpoint=False), 500, 500)
+        self.projGeom128_512 = astra.create_proj_geom('fanflat', 0.35, 512, np.linspace(0, np.pi, 128, endpoint=False), 500, 500)
 
-    args = parser.parse_args()
-    # print(f'🤡 args: {args}')
-    # run_id = str(os.getpid())
-    # run_time = time.strftime('%Y-%b-%d-%H-%M-%S')
-    # args.doc = '_'.join([args.doc, run_id, run_time])
-    args.log = os.path.join(args.run, 'logs', args.doc)
-    # parse config file
-    if not args.test:
-        # print(f'NO TEST!!!')
-        with open(os.path.join('NCSN_train/configs', args.config), 'r') as f:
-            config = yaml.unsafe_load(f)
-        new_config = dict2namespace(config)
-    else:
-        with open(os.path.join(args.log, 'config.yml'), 'r') as f:
-            config = yaml.unsafe_load(f)
-        new_config = config
+        # --- volume geometries ---
+        # image-domain: 256×256 grid
+        self.volGeom   = astra.create_vol_geom(256, 256, (-256/2), (256/2), (-256/2), (256/2))
+        # sinogram-domain full-resolution: 512×512 grid
+        self.volGeom512 = astra.create_vol_geom(512, 512, (-512/2), (512/2), (-512/2), (512/2))
 
-    if not args.test:
-        # print("1️⃣")
-        if not args.resume_training:
-            # print("2️⃣")
-            if os.path.exists(args.log):
-                # print("3️⃣")
-                # print(f'args.log: {args.log}')
-                shutil.rmtree(args.log)
-            os.makedirs(args.log)
+        # LACT geometries
+        self.projGeomLACT90 = astra.create_proj_geom('fanflat', 0.7, 1500,
+            np.linspace(0, np.pi/2 + np.pi/12, 480, endpoint=False), 2000, 500)
+        self.projGeomLACT60 = astra.create_proj_geom('fanflat', 1.5,  640,
+            np.linspace(0, np.pi/3, 240, endpoint=False), 1500, 500)
 
-        with open(os.path.join(args.log, 'config.yml'), 'w') as f:
-            yaml.dump(new_config, f, default_flow_style=False)
-
-        # setup logger
-        level = getattr(logging, args.verbose.upper(), None)
-        if not isinstance(level, int):
-            # print("4️⃣")
-            raise ValueError('level {} not supported'.format(args.verbose))
-
-        handler1 = logging.StreamHandler()
-        handler2 = logging.FileHandler(os.path.join(args.log, 'stdout.txt'))
-        formatter = logging.Formatter('%(levelname)s - %(filename)s - %(asctime)s - %(message)s')
-        handler1.setFormatter(formatter)
-        handler2.setFormatter(formatter)
-        logger = logging.getLogger()
-        logger.addHandler(handler1)
-        logger.addHandler(handler2)
-        logger.setLevel(level)
-
-    else:
-        level = getattr(logging, args.verbose.upper(), None)
-        if not isinstance(level, int):
-            raise ValueError('level {} not supported'.format(args.verbose))
-
-        handler1 = logging.StreamHandler()
-        formatter = logging.Formatter('%(levelname)s - %(filename)s - %(asctime)s - %(message)s')
-        handler1.setFormatter(formatter)
-        logger = logging.getLogger()
-        logger.addHandler(handler1)
-        logger.setLevel(level)
-
-    # add device
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-    logging.info("Using device: {}".format(device))
-    new_config.device = device
-
-    # set random seed
-    torch.manual_seed(args.seed)
-    np.random.seed(args.seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(args.seed)
-
-    torch.backends.cudnn.benchmark = True
-
-    return args, new_config
-
-
-def dict2namespace(config):
-    namespace = argparse.Namespace()
-    for key, value in config.items():
-        if isinstance(value, dict):
-            new_value = dict2namespace(value)
+    def FP(self, img, ang_num):
+        """
+        Forward project a 2D image 'img' at ang_num angles.
+        Automatically picks 256×256 vs 512×512 volume grid based on img.shape.
+        """
+        # select projection geometry
+        if   ang_num == 29:  projGeom = self.projGeom29
+        elif ang_num == 30:  projGeom = self.projGeom30
+        elif ang_num == 60:  projGeom = self.projGeom60
+        elif ang_num == 120: projGeom = self.projGeom120
+        elif ang_num == 240: projGeom = self.projGeom240
+        elif ang_num == 480: projGeom = self.projGeom480
+        elif ang_num == 580: projGeom = self.projGeom580
+        elif ang_num == 32:  projGeom = self.projGeom32_512
+        elif ang_num == 64:  projGeom = self.projGeom64_512
+        elif ang_num == 128: projGeom = self.projGeom128_512
         else:
-            new_value = value
-        setattr(namespace, key, new_value)
-    return namespace
+            raise ValueError(f"Unsupported angle count: {ang_num}")
 
-
-def main():
-    args, config = parse_args_and_config()
-    logging.info("Writing log file to {}".format(args.log))
-    logging.info("Exp instance id = {}".format(os.getpid()))
-    logging.info("Exp comment = {}".format(args.comment))
-    logging.info("Config =")
-    print(">" * 80)
-    print(config)
-    print("<" * 80)
-
-    try:
-        print(f'args.runner: {args.runner}')
-        runner = eval(args.runner)(args, config)
-        if not args.test:
-            # print("👌")
-            runner.train()
+        # choose volume geometry by input resolution
+        if img.shape == (512, 512):
+            volGeom = self.volGeom512
         else:
-            # print("⌚️")
-            runner.test()
-    except:
-        logging.error(traceback.format_exc())
+            volGeom = self.volGeom
 
-    return 0
+        rec_id  = astra.data2d.create('-vol',  volGeom, img)
+        proj_id = astra.data2d.create('-sino', projGeom)
+        cfg     = astra.astra_dict('FP_CUDA')
+        cfg['VolumeDataId']     = rec_id
+        cfg['ProjectionDataId'] = proj_id
 
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id)
+        pro = astra.data2d.get(proj_id)
 
-if __name__ == '__main__':
-    sys.exit(main())
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return pro
+
+    def FBP(self, proj, ang_num):
+        """
+        Filtered back-projection of sinogram 'proj' at ang_num angles.
+        Automatically picks 256×256 vs 512×512 volume grid based on ang_num==580.
+        """
+        # select projection geometry
+        if   ang_num == 29:  projGeom = self.projGeom29
+        elif ang_num == 30:  projGeom = self.projGeom30
+        elif ang_num == 60:  projGeom = self.projGeom60
+        elif ang_num == 120: projGeom = self.projGeom120
+        elif ang_num == 240: projGeom = self.projGeom240
+        elif ang_num == 480: projGeom = self.projGeom480
+        elif ang_num == 580: projGeom = self.projGeom580
+        elif ang_num == 32:  projGeom = self.projGeom32_512
+        elif ang_num == 64:  projGeom = self.projGeom64_512
+        elif ang_num == 128: projGeom = self.projGeom128_512
+        else:
+            raise ValueError(f"Unsupported angle count: {ang_num}")
+
+        # choose volume geometry
+        if ang_num == 580:
+            volGeom = self.volGeom512
+        else:
+            volGeom = self.volGeom
+
+        rec_id  = astra.data2d.create('-vol',  volGeom)
+        proj_id = astra.data2d.create('-sino', projGeom, proj)
+        cfg     = astra.astra_dict('FBP_CUDA')
+        cfg['ReconstructionDataId'] = rec_id
+        cfg['ProjectionDataId']    = proj_id
+
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id)
+        rec = astra.data2d.get(rec_id)
+
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return rec
+
+    def SIRT(self, VOL, proj, ang_num, iter_num):
+        """
+        SIRT iterative reconstruction.
+        """
+        # select projection geometry
+        if   ang_num == 29:  projGeom = self.projGeom29
+        elif ang_num == 30:  projGeom = self.projGeom30
+        elif ang_num == 60:  projGeom = self.projGeom60
+        elif ang_num == 120: projGeom = self.projGeom120
+        elif ang_num == 240: projGeom = self.projGeom240
+        elif ang_num == 480: projGeom = self.projGeom480
+        elif ang_num == 580: projGeom = self.projGeom580
+        elif ang_num == 32:  projGeom = self.projGeom32_512
+        elif ang_num == 64:  projGeom = self.projGeom64_512
+        elif ang_num == 128: projGeom = self.projGeom128_512
+        else:
+            raise ValueError(f"Unsupported angle count: {ang_num}")
+
+        # choose volume geometry
+        if ang_num == 580:
+            volGeom = self.volGeom512
+        else:
+            volGeom = self.volGeom
+
+        # create volume & projection data
+        rec_id  = astra.data2d.create('-vol',  volGeom) if VOL is None else astra.data2d.create('-vol', volGeom, VOL)
+        proj_id = astra.data2d.create('-sino', projGeom, proj)
+        cfg     = astra.astra_dict('SIRT_CUDA')
+        cfg['ReconstructionDataId'] = rec_id
+        cfg['ProjectionDataId']    = proj_id
+
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id, iter_num)
+        rec = astra.data2d.get(rec_id)
+
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return rec
+
+    def EM(self, VOL, proj, ang_num, iter_num):
+        """
+        EM iterative reconstruction.
+        """
+        # select projection geometry (same as SIRT)
+        if   ang_num == 29:  projGeom = self.projGeom29
+        elif ang_num == 30:  projGeom = self.projGeom30
+        elif ang_num == 60:  projGeom = self.projGeom60
+        elif ang_num == 120: projGeom = self.projGeom120
+        elif ang_num == 240: projGeom = self.projGeom240
+        elif ang_num == 480: projGeom = self.projGeom480
+        elif ang_num == 580: projGeom = self.projGeom580
+        elif ang_num == 32:  projGeom = self.projGeom32_512
+        elif ang_num == 64:  projGeom = self.projGeom64_512
+        elif ang_num == 128: projGeom = self.projGeom128_512
+        else:
+            raise ValueError(f"Unsupported angle count: {ang_num}")
+
+        # choose volume geometry
+        if ang_num == 580:
+            volGeom = self.volGeom512
+        else:
+            volGeom = self.volGeom
+
+        rec_id  = astra.data2d.create('-vol',  volGeom) if VOL is None else astra.data2d.create('-vol', volGeom, VOL)
+        proj_id = astra.data2d.create('-sino', projGeom, proj)
+        cfg     = astra.astra_dict('EM_CUDA')
+        cfg['ReconstructionDataId'] = rec_id
+        cfg['ProjectionDataId']    = proj_id
+
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id, iter_num)
+        rec = astra.data2d.get(rec_id)
+
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return rec
+
+    def LACTFP(self, img, ang_num):
+        """
+        Forward projection for limited-angle CT (LACT).
+        """
+        # select LACT projection geometry
+        if ang_num == 60:
+            projGeom = self.projGeomLACT60
+        elif ang_num == 90:
+            projGeom = self.projGeomLACT90
+        else:
+            raise ValueError(f"Unsupported LACT angle: {ang_num}")
+
+        # choose volume geometry by input resolution
+        if img.shape == (512, 512):
+            volGeom = self.volGeom512
+        else:
+            volGeom = self.volGeom
+
+        rec_id  = astra.data2d.create('-vol',  volGeom, img)
+        proj_id = astra.data2d.create('-sino', projGeom)
+        cfg     = astra.astra_dict('FP_CUDA')
+        cfg['VolumeDataId']     = rec_id
+        cfg['ProjectionDataId'] = proj_id
+
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id)
+        pro = astra.data2d.get(proj_id)
+
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return pro
+
+    def LACTSIRT(self, VOL, proj, ang_num, iter_num):
+        """
+        SIRT for limited-angle CT (LACT).
+        """
+        if   ang_num == 60:
+            projGeom = self.projGeomLACT60
+        elif ang_num == 90:
+            projGeom = self.projGeomLACT90
+        else:
+            raise ValueError(f"Unsupported LACT angle: {ang_num}")
+
+        # choose volume geometry
+        if ang_num == 580:
+            volGeom = self.volGeom512
+        else:
+            volGeom = self.volGeom
+
+        rec_id  = astra.data2d.create('-vol',  volGeom) if VOL is None else astra.data2d.create('-vol', volGeom, VOL)
+        proj_id = astra.data2d.create('-sino', projGeom, proj)
+        cfg     = astra.astra_dict('SIRT_CUDA')
+        cfg['ReconstructionDataId'] = rec_id
+        cfg['ProjectionDataId']    = proj_id
+
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id, iter_num)
+        rec = astra.data2d.get(rec_id)
+
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return rec
+
+    def LACTFBP(self, proj, ang_num):
+        """
+        FBP for limited-angle CT (LACT).
+        """
+        if   ang_num == 60:
+            projGeom = self.projGeomLACT60
+        elif ang_num == 90:
+            projGeom = self.projGeomLACT90
+        else:
+            raise ValueError(f"Unsupported LACT angle: {ang_num}")
+
+        # choose volume geometry
+        if ang_num == 580:
+            volGeom = self.volGeom512
+        else:
+            volGeom = self.volGeom
+
+        rec_id  = astra.data2d.create('-vol',  volGeom)
+        proj_id = astra.data2d.create('-sino', projGeom, proj)
+        cfg     = astra.astra_dict('FBP_CUDA')
+        cfg['ReconstructionDataId'] = rec_id
+        cfg['ProjectionDataId']    = proj_id
+
+        alg_id = astra.algorithm.create(cfg)
+        astra.algorithm.run(alg_id)
+        rec = astra.data2d.get(rec_id)
+
+        # cleanup
+        astra.algorithm.delete(alg_id)
+        astra.data2d.delete(rec_id)
+        astra.data2d.delete(proj_id)
+
+        return rec

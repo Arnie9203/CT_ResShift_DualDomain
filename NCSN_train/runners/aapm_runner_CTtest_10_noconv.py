@@ -1,247 +1,3 @@
-# import os
-# import cv2
-# import numpy as np
-# import torch
-# import torch.nn as nn
-# from ..models.cond_refinenet_dilated_noconv import CondRefineNetDilated
-# from scipy.io import loadmat, savemat
-# import matplotlib.pyplot as plt
-# from .multiCTmain import FanBeam
-# import time
-# import scipy.io as scio
-# from scipy.ndimage import zoom
-# from scipy.optimize import minimize
-
-# plt.ion()
-# savepath = './result/'
-# __all__ = ['Aapm_Runner_CTtest_10_noconv']
-
-
-# def matrix1_0(row, col, num):
-#     matrix = np.zeros((row, col), dtype=int)
-#     matrix[::num, :] = 1
-#     return matrix
-
-
-# class Aapm_Runner_CTtest_10_noconv():
-#     def __init__(self, args, config):
-#         self.args = args
-#         self.config = config
-
-#     def write_images(self, x, image_save_path):
-#         x = np.array(x, dtype=np.uint8)
-#         cv2.imwrite(image_save_path, x)
-
-#     def test(self):
-#         # 2023.03.06 lizrzr
-#         AAPM = scio.loadmat('aapm.mat')['save_data'] #????
-#         # aaa = scio.loadmat('000420.mat')['inputs']
-
-#         slice_img = AAPM[:, :, 420]
-
-#         slice_img = scio.loadmat('xiaoqiu1.mat')['aaa']
-#         # slice_img = slice_img / slice_img.max()
-#         np.save('slice_img160.npy', slice_img)
-#         plt.imshow(slice_img, cmap='gray')
-#         plt.show()
-#         print(slice_img.shape)
-#         fanBeam = FanBeam()
-#         # bbb = fanBeam.FP(aaa, ang_num=580)
-#         # savemat('./result/' + 'input420.mat', {'sinofromimg': bbb})
-#         PROJS = fanBeam.LACTFP(slice_img, ang_num=90)
-#         plt.imshow(PROJS, cmap='gray')
-#         plt.show()
-#         # PROJS = zoom(PROJS, (4, 1), order=0)
-#         sparse_slice = fanBeam.LACTFBP(PROJS, 90)
-#         savemat('./result/' + '90FBP.mat', {'x_rec': sparse_slice})
-#         plt.imshow(sparse_slice, cmap='gray')
-#         plt.show()
-#         PROJS240 = fanBeam.FP(slice_img, ang_num=240)
-#         PROJS580 = fanBeam.FP(slice_img, ang_num=580)
-#         savemat('PROJS.mat', {'PROJS580': PROJS580})
-#         # slice_noise = 0.5*slice_img/slice_img.max() + 0.5*np.random.normal(0,1, size=sparse_slice.shape)
-#         # plt.imshow(slice_noise, cmap='gray')
-#         # plt.show()
-#         # image3d = sparse_AAPM
-#         states_sino = torch.load(os.path.join(self.args.log, 'sinogram\checkpoint_100000.pth'),
-#                                  map_location=self.config.device)
-#         scorenet_sino = CondRefineNetDilated(self.config).to(self.config.device)
-#         scorenet_sino = torch.nn.DataParallel(scorenet_sino, device_ids=[1])
-#         scorenet_sino.load_state_dict(states_sino[0])
-#         scorenet_sino.eval()
-
-#         # state_image = torch.load(os.path.join(self.args.log, 'image\checkpoint_100000.pth'),
-#         #                          map_location=self.config.device)
-#         state_image = torch.load(os.path.join(self.args.log, 'xiaoqiu\checkpoint_62500.pth'),
-#                                  map_location=self.config.device)
-#         scorenet_image = CondRefineNetDilated(self.config).to(self.config.device)
-#         scorenet_image = torch.nn.DataParallel(scorenet_image, device_ids=[1])
-#         scorenet_image.load_state_dict(state_image[0])
-#         scorenet_image.eval()
-
-#         x_img = sparse_slice
-#         x_sino = PROJS
-
-#         maxdegrade_img = x_img.max()
-#         maxdegrade_sino = x_sino.max()
-
-#         x0_img = nn.Parameter(torch.Tensor(np.zeros([1, 10, 512, 512])).uniform_(-1, 1))
-#         x0_sino_60 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 60, 240])).uniform_(-1, 1))
-#         x0_sino_120 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 120, 240])).uniform_(-1, 1))
-#         x0_sino_240 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 240, 240])).uniform_(-1, 1))
-#         x0_sino_480 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 480, 240])).uniform_(-1, 1))
-#         x0_sino_580 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 580, 580])).uniform_(-1, 1))
-
-#         x01_img = x0_img.cuda()
-#         x01_sino_60 = x0_sino_60.cuda()
-#         x01_sino_120 = x0_sino_120.cuda()
-#         x01_sino_240 = x0_sino_240.cuda()
-#         x01_sino_480 = x0_sino_480.cuda()
-#         x01_sino_580 = x0_sino_580.cuda()
-
-#         step_lr = 0.6 * 0.00003
-#         sigmas = np.exp(np.linspace(np.log(1), np.log(0.01), 12))
-#         n_steps_each = 150
-#         max_psnr = 0
-#         max_ssim = 0
-#         min_hfen = 100
-#         start_start = time.time()
-#         # idx从0计算
-#         for idx, sigma in enumerate(sigmas):
-#             start_out = time.time()
-#             print(idx)
-#             lambda_recon = 1. / sigma ** 2
-#             # labels是一个数
-#             labels = torch.ones(1, device=x0_img.device) * idx
-#             labels = labels.long()
-#             step_size = step_lr * (sigma / sigmas[-1]) ** 2
-#             print('sigma = {}'.format(sigma))
-#             for step in range(n_steps_each):
-#                 start_in = time.time()
-#                 noise1_img = torch.rand_like(x0_img).cpu().detach() * np.sqrt(step_size * 2)
-#                 noise1_sino_60 = torch.rand_like(torch.Tensor(x0_sino_60)).cpu().detach() * np.sqrt(step_size * 2)
-#                 noise1_sino_120 = torch.rand_like(x0_sino_120).cpu().detach() * np.sqrt(step_size * 2)
-#                 noise1_sino_240 = torch.rand_like(x0_sino_240).cpu().detach() * np.sqrt(step_size * 2)
-#                 noise1_sino_480 = torch.rand_like(x0_sino_480).cpu().detach() * np.sqrt(step_size * 2)
-#                 noise1_sino_580 = torch.rand_like(x0_sino_580).cpu().detach() * np.sqrt(step_size * 2)
-
-#                 grad1_img = np.zeros([1, 10, 512, 512])
-#                 grad1_sino_60 = np.zeros([1, 10, 60, 240])
-#                 grad1_sino_120 = np.zeros([1, 10, 120, 240])
-#                 grad1_sino_240 = np.zeros([1, 10, 240, 240])
-#                 grad1_sino_480 = np.zeros([1, 10, 480, 240])
-#                 grad1_sino_580 = np.zeros([1, 10, 580, 580])
-
-#                 grad1_img = torch.from_numpy(grad1_img)
-#                 grad1_sino_60 = torch.from_numpy(grad1_sino_60)
-#                 grad1_sino_120 = torch.from_numpy(grad1_sino_120)
-#                 grad1_sino_240 = torch.from_numpy(grad1_sino_240)
-#                 grad1_sino_480 = torch.from_numpy(grad1_sino_480)
-#                 grad1_sino_580 = torch.from_numpy(grad1_sino_580)
-
-#                 with torch.no_grad():
-#                     grad1_img = scorenet_image(x01_img, labels).detach()
-
-#                 # x0非cuda,noise1非cuda
-#                 x0_img = x0_img + step_size * grad1_img.cpu()
-#                 x01_img = x0_img + noise1_img
-#                 x01_img = torch.tensor(x01_img.cuda(), dtype=torch.float32)
-#                 x0_img = np.array(x0_img.cpu().detach(), dtype=np.float32)
-#                 x1_img = np.squeeze(x0_img)
-#                 # x1是512x512的矩阵
-#                 x1_img = np.mean(x1_img, axis=0)
-#                 x1max_img = x1_img * maxdegrade_img
-
-#                 #                x1max_img = np.transpose(x1max_img, (1, 2, 0))
-#                 print(x1max_img.max())
-#                 sum_diff = x_img - x1max_img
-
-#                 x_new_img = 0.5 * fanBeam.LACTSIRT(VOL=x_img.copy(),
-#                                                proj=PROJS, ang_num=90, iter_num=20) + 0.5 * (
-#                                     x_img - sum_diff)
-
-#                 x_img = x_new_img
-#                 if step == n_steps_each - 1:
-#                     x_sino_mid = fanBeam.FP(img=x_img.copy(), ang_num=580)
-#                     plt.title(step, fontsize=30)
-#                     plt.imshow(x_img, cmap='gray')
-#                     plt.show()
-#                     savemat('./result/' + str(idx) + 'image.mat', {'x_rec': x_new_img})
-#                     savemat('./result/' + str(idx) + 'sino.mat', {'y_sino': x_sino_mid})
-#                 ###############################sino_model#############################################
-#                 sino_from_img = fanBeam.FP(img=x_img.copy(), ang_num=580)
-#                 with torch.no_grad():
-#                     grad1_sino_580 = scorenet_sino(x01_sino_580, labels).detach()
-#                 x0_sino_580 = x0_sino_580 + step_size * grad1_sino_580.cpu()
-#                 x01_sino_580 = x0_sino_580 + noise1_sino_580
-#                 x01_sino_580 = torch.tensor(x01_sino_580.cuda(), dtype=torch.float32)
-#                 x0_sino_580 = np.array(x0_sino_580.cpu().detach(), dtype=np.float32)
-#                 x1_sino_580 = np.squeeze(x0_sino_580)
-#                 x1_sino_580 = np.mean(x1_sino_580, axis=0)
-#                 x1max_sino_580 = x1_sino_580 * maxdegrade_sino
-#                 x_new_sino = PROJS580 * matrix1_0(580, 580, 20) + [
-#                     (1 - ((step + 100 * idx) / 1200)) * sino_from_img * 0.2 + 0.2 * ((step + 100 * idx) / 1200) * (
-#                         x1max_sino_580)] * (1 - matrix1_0(580, 580, 20)) + 0.8 * sino_from_img * (
-#                                      1 - matrix1_0(580, 580, 20))
-#                 # x_new_sino = PROJS580 * matrix1_0(580, 580, 20) + [
-#                 #     (1 - ((step + 100 * idx) / 1200)) * sino_from_img * 0 + 0* ((step + 100 * idx) / 1200) * (
-#                 #         x1max_sino_580)] * (1 - matrix1_0(580, 580, 20)) + 1* sino_from_img * (
-#                 #                      1 - matrix1_0(580, 580, 20))
-#                 x_sino = x_new_sino.squeeze()
-#                 x_rec_sino_580 = x_sino.copy()
-#                 x_rec_sino_580 = x_rec_sino_580 / maxdegrade_sino
-#                 x_mid_sino_580 = np.zeros([1, 10, 580, 580], dtype=np.float32)
-#                 x_rec_sino_580 = np.expand_dims(x_rec_sino_580, 0)
-#                 x_mid_1_sino_580 = np.tile(x_rec_sino_580, [10, 1, 1])
-#                 x_mid_sino_580[0, :, :] = x_mid_1_sino_580
-#                 x0_sino_580 = torch.tensor(x_mid_sino_580, dtype=torch.float32)
-#                 ###############################sino_model#############################################
-#                 #        x_img = 0.99 * fanBeam.SIRT(VOL=x_img, proj=zoom(PROJS, (8, 1), order=1), ang_num=240,
-#                 #                                   iter_num=20) + 0.01 * fanBeam.SIRT(VOL=x_img,
-#                 #                                                                     proj=(
-#                 #                                                                              x1max_sino_240) * (
-#                 #                                                                                      1 - matrix1_0(240, 240,
-#                 #                                                                                                    8)),
-#                 #                                                                     ang_num=240,
-#                 #                                                                     iter_num=20)
-#                 if idx > 111 :
-#                     # x_img = ((step + 100 * idx) / 1200) * fanBeam.SIRT(VOL=x_img, proj=x_new_sino.squeeze(),
-#                     #                                                    ang_num=580, iter_num=20) + (
-#                     #                     1 - ((step + 100 * idx) / 1200)) * x_img
-#                     x_img = fanBeam.SIRT(VOL=x_img, proj=x_new_sino.squeeze(), ang_num=580,
-#                                           iter_num=20)
-#                     #x_img = fanBeam.SIRT(VOL=x_img, proj=PROJS, ang_num=29, iter_num=20)
-#                 x_new_sino = x_new_sino.squeeze()
-
-
-#                 x_rec_img = x_img.copy()
-#                 y_sino = fanBeam.FP(img=x_rec_img, ang_num=580)
-#                 x_rec_img = x_rec_img / maxdegrade_img
-
-#                 # if step == n_steps_each - 1:
-#                 #     savemat('./result/' + str(idx) + 'image.mat', {'x_rec': x_rec_img})
-#                 #     savemat('./result/' + str(idx) + 'sino.mat', {'y_sino': y_sino})
-#                 end_in = time.time()
-#                 print("inner loop:%.2fs" % (end_in - start_in))
-#                 print("current {} step".format(step))
-#                 x_mid_img = np.zeros([1, 10, 512, 512], dtype=np.float32)
-#                 # clip，强行截取上下限操作， 小于0的置为0，大于1的置为1
-#                 x_rec_img = np.clip(x_rec_img, 0, 1)
-#                 x_rec_img = np.expand_dims(x_rec_img, 0)
-#                 x_mid_1_img = np.tile(x_rec_img, [10, 1, 1])
-#                 x_mid_img[0, :, :] = x_mid_1_img
-#                 x0_img = torch.tensor(x_mid_img, dtype=torch.float32)
-
-#             end_out = time.time()
-#             print("outer iter:%.2fs" % (end_out - start_out))
-
-#         plt.ioff()
-#         end_end = time.time()
-#         print("PSNR:%.2f" % (max_psnr), "SSIM:%.2f" % (max_ssim))
-#         print("total time:%.2fs" % (end_end - start_start))
-
-
-
 import os
 import cv2
 import numpy as np
@@ -254,236 +10,187 @@ from .multiCTmain import FanBeam
 import time
 import scipy.io as scio
 from scipy.ndimage import zoom
-from scipy.optimize import minimize
+from skimage.metrics import peak_signal_noise_ratio as psnr
+from skimage.metrics import structural_similarity as ssim
+import glob
 
 plt.ion()
-savepath = './result/'
+result_dir = "./result"
+os.makedirs(result_dir, exist_ok=True)  # Create result directory if it doesn't exist
 __all__ = ['Aapm_Runner_CTtest_10_noconv']
 
-
 def matrix1_0(row, col, num):
-    # 生成一个 row×col 的矩阵，每隔 num 行全为1，其余为0，用于掩码操作
+    """Generates a mask matrix where every 'num'-th row is all ones."""
     matrix = np.zeros((row, col), dtype=int)
-    matrix[::num, :] = 1
+    if num > 0:
+        matrix[::num, :] = 1
     return matrix
-
 
 class Aapm_Runner_CTtest_10_noconv():
     def __init__(self, args, config):
         self.args = args
         self.config = config
 
-    def write_images(self, x, image_save_path):
-        # 将数组 x 存为8位无符号整数的图像文件
-        x = np.array(x, dtype=np.uint8)
-        cv2.imwrite(image_save_path, x)
-
     def test(self):
-        # 载入mat文件，获取原始CT体数据（体数据变量名'save_data'）
-        AAPM = scio.loadmat('aapm.mat')['save_data']
-        # 选取第420张切片
-        slice_img = AAPM[:, :, 420]
+        # =====================================================================
+        # 1. Configuration Parameters
+        # =====================================================================
+        # Image and Sinogram dimensions (adapted from your data)
+        IMG_SIZE = 256
+        SPARSE_VIEWS = 32   # Sparse-angle view count
+        FULL_VIEWS = 128    # Target full-angle view count
+        DETECTORS = 512     # Detector count for sinogram
 
-        # 或者直接读取其他测试切片
-        slice_img = scio.loadmat('xiaoqiu1.mat')['aaa']
+        # Langevin Dynamics parameters
+        BATCH_CHANNELS = 10 # Number of parallel sampling chains
+        STEP_LR = 0.6 * 0.00003
+        N_STEPS_EACH = 150  # Steps per sigma level
+        SIGMA_LEVELS = 12   # Number of noise levels
 
-        # 保存为npy，方便后续快速加载
-        np.save('slice_img160.npy', slice_img)
-        # 可视化切片
-        plt.imshow(slice_img, cmap='gray')
-        plt.show()
-        print(slice_img.shape)
+        # =====================================================================
+        # 2. Setup Test Environment and Logging
+        # =====================================================================
+        test_dir = '/home/arnie/Project/CT_ResShift_DualDomain/scripts/test'
+        npy_files = sorted(glob.glob(os.path.join(test_dir, '*.npy')))
 
-        # 构建扇束投影操作对象
-        fanBeam = FanBeam()
+        # Initialize lists to store metrics for all test files
+        PSNR_all_files = []
+        SSIM_all_files = []
 
-        # 对切片进行稀疏角度投影（90角度）
-        PROJS = fanBeam.LACTFP(slice_img, ang_num=90)
-        plt.imshow(PROJS, cmap='gray')
-        plt.show()
+        # Setup log file
+        log_dir = os.path.join(result_dir, 'test_logs')
+        os.makedirs(log_dir, exist_ok=True)
+        test_log_file = os.path.join(log_dir, 'test_log.txt')
+        with open(test_log_file, 'w') as f:
+            f.write('File\t\t\tPSNR\t\t\tSSIM\n')
 
-        # 用稀疏角度的投影重建图像（FBP算法）
-        sparse_slice = fanBeam.LACTFBP(PROJS, 90)
-        savemat('./result/' + '90FBP.mat', {'x_rec': sparse_slice})
-        plt.imshow(sparse_slice, cmap='gray')
-        plt.show()
-
-        # 分别得到240和580角度的全投影
-        PROJS240 = fanBeam.FP(slice_img, ang_num=240)
-        PROJS580 = fanBeam.FP(slice_img, ang_num=580)
-        savemat('PROJS.mat', {'PROJS580': PROJS580})
-
-        # 载入预训练的 sinogram 域神经网络模型
-        states_sino = torch.load(os.path.join(self.args.log, 'sinogram\checkpoint_100000.pth'),
-                                 map_location=self.config.device)
+        # =====================================================================
+        # 3. Load Models (once before the loop)
+        # =====================================================================
+        # Load sinogram domain model
+        sino_model_path = '/home/arnie/Project/CT_ResShift_DualDomain/run/logs/AapmCT_Sino/checkpoint_14000.pth'
+        states_sino = torch.load(sino_model_path, map_location=self.config.device)
         scorenet_sino = CondRefineNetDilated(self.config).to(self.config.device)
-        scorenet_sino = torch.nn.DataParallel(scorenet_sino, device_ids=[1])
+        scorenet_sino = torch.nn.DataParallel(scorenet_sino, device_ids=[0])
         scorenet_sino.load_state_dict(states_sino[0])
         scorenet_sino.eval()
 
-        # 载入预训练的 image 域神经网络模型
-        # state_image = torch.load(os.path.join(self.args.log, 'image\checkpoint_100000.pth'),
-        #                          map_location=self.config.device)
-        state_image = torch.load(os.path.join(self.args.log, 'xiaoqiu\checkpoint_62500.pth'),
-                                 map_location=self.config.device)
+        # Load image domain model
+        image_model_path = '/home/arnie/Project/CT_ResShift_DualDomain/run/logs/AapmCT_10C/checkpoint_47000.pth'
+        state_image = torch.load(image_model_path, map_location=self.config.device)
         scorenet_image = CondRefineNetDilated(self.config).to(self.config.device)
-        scorenet_image = torch.nn.DataParallel(scorenet_image, device_ids=[1])
+        scorenet_image = torch.nn.DataParallel(scorenet_image, device_ids=[0])
         scorenet_image.load_state_dict(state_image[0])
         scorenet_image.eval()
+        
+        # =====================================================================
+        # 4. Main Loop: Process each test file
+        # =====================================================================
+        total_start_time = time.time()
+        for npy_file in npy_files:
+            file_basename = os.path.basename(npy_file)
+            print(f"\n--- Processing file: {file_basename} ---")
 
-        # 初始化当前的图像和投影数据
-        x_img = sparse_slice            # 稀疏角度FBP重建的图像
-        x_sino = PROJS                  # 稀疏角度的投影数据
+            # Load ground truth image
+            slice_img = np.load(npy_file)
+            if slice_img.shape[0] != IMG_SIZE: # Ensure correct size
+                zoom_factor = IMG_SIZE / slice_img.shape[0]
+                slice_img = zoom(slice_img, zoom_factor)
 
-        maxdegrade_img = x_img.max()    # 图像最大值，用于后续反归一化
-        maxdegrade_sino = x_sino.max()  # 投影最大值，用于后续反归一化
+            # --- Initial Data Generation ---
+            fanBeam = FanBeam()
+            PROJS_sparse = fanBeam.LACTFP(slice_img, ang_num=SPARSE_VIEWS)
+            sparse_slice_fbp = fanBeam.LACTFBP(PROJS_sparse, SPARSE_VIEWS)
+            PROJS_full_gt = fanBeam.FP(slice_img, ang_num=FULL_VIEWS) # Ground truth for data consistency
 
-        # 初始化一批高斯噪声的初始变量，后续用于神经采样或反推
-        x0_img = nn.Parameter(torch.Tensor(np.zeros([1, 10, 512, 512])).uniform_(-1, 1))
-        x0_sino_60 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 60, 240])).uniform_(-1, 1))
-        x0_sino_120 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 120, 240])).uniform_(-1, 1))
-        x0_sino_240 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 240, 240])).uniform_(-1, 1))
-        x0_sino_480 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 480, 240])).uniform_(-1, 1))
-        x0_sino_580 = nn.Parameter(torch.Tensor(np.zeros([1, 10, 580, 580])).uniform_(-1, 1))
+            # --- Initialize variables for reconstruction ---
+            x_img = sparse_slice_fbp  # Start with FBP reconstruction
+            maxdegrade_img = x_img.max() if x_img.max() > 0 else 1.0
+            maxdegrade_sino = PROJS_sparse.max() if PROJS_sparse.max() > 0 else 1.0
 
-        # 转移到GPU
-        x01_img = x0_img.cuda()
-        x01_sino_60 = x0_sino_60.cuda()
-        x01_sino_120 = x0_sino_120.cuda()
-        x01_sino_240 = x0_sino_240.cuda()
-        x01_sino_480 = x0_sino_480.cuda()
-        x01_sino_580 = x0_sino_580.cuda()
+            x0_img = nn.Parameter(torch.Tensor(np.zeros([1, BATCH_CHANNELS, IMG_SIZE, IMG_SIZE])).uniform_(-1, 1)).cuda()
+            x0_sino = nn.Parameter(torch.Tensor(np.zeros([1, BATCH_CHANNELS, FULL_VIEWS, DETECTORS])).uniform_(-1, 1)).cuda()
 
-        # 步长、噪声层次（sigma）、每层采样步数、评价指标初始化
-        step_lr = 0.6 * 0.00003
-        sigmas = np.exp(np.linspace(np.log(1), np.log(0.01), 12))   # 12个噪声等级
-        n_steps_each = 150
-        max_psnr = 0
-        max_ssim = 0
-        min_hfen = 100
-        start_start = time.time()
+            # --- Langevin Dynamics Loop ---
+            sigmas = np.exp(np.linspace(np.log(1), np.log(0.01), SIGMA_LEVELS))
+            
+            for idx, sigma in enumerate(sigmas):
+                print(f"  Sigma Level {idx + 1}/{len(sigmas)}: {sigma:.4f}")
+                labels = torch.ones(1, device=x0_img.device).long() * idx
+                step_size = STEP_LR * (sigma / sigmas[-1]) ** 2
 
-        # 多层噪声逐步采样
-        for idx, sigma in enumerate(sigmas):
-            start_out = time.time()
-            print(idx)
-            lambda_recon = 1. / sigma ** 2
-            labels = torch.ones(1, device=x0_img.device) * idx   # 当前噪声标签
-            labels = labels.long()
-            step_size = step_lr * (sigma / sigmas[-1]) ** 2      # 步长自适应缩放
-            print('sigma = {}'.format(sigma))
-            for step in range(n_steps_each):
-                start_in = time.time()
-                # 构造与各自变量同形状的高斯噪声
-                noise1_img = torch.rand_like(x0_img).cpu().detach() * np.sqrt(step_size * 2)
-                noise1_sino_60 = torch.rand_like(torch.Tensor(x0_sino_60)).cpu().detach() * np.sqrt(step_size * 2)
-                noise1_sino_120 = torch.rand_like(x0_sino_120).cpu().detach() * np.sqrt(step_size * 2)
-                noise1_sino_240 = torch.rand_like(x0_sino_240).cpu().detach() * np.sqrt(step_size * 2)
-                noise1_sino_480 = torch.rand_like(x0_sino_480).cpu().detach() * np.sqrt(step_size * 2)
-                noise1_sino_580 = torch.rand_like(x0_sino_580).cpu().detach() * np.sqrt(step_size * 2)
+                for step in range(N_STEPS_EACH):
+                    # -- Image Domain Update --
+                    with torch.no_grad():
+                        grad_img = scorenet_image(x0_img, labels)
+                    noise_img = torch.randn_like(x0_img) * np.sqrt(step_size * 2)
+                    x0_img.data = x0_img.data + step_size * grad_img + noise_img
+                    x1_img_est = np.mean(x0_img.cpu().detach().numpy().squeeze(), axis=0) * maxdegrade_img
 
-                # 初始化梯度为零张量
-                grad1_img = np.zeros([1, 10, 512, 512])
-                grad1_sino_60 = np.zeros([1, 10, 60, 240])
-                grad1_sino_120 = np.zeros([1, 10, 120, 240])
-                grad1_sino_240 = np.zeros([1, 10, 240, 240])
-                grad1_sino_480 = np.zeros([1, 10, 480, 240])
-                grad1_sino_580 = np.zeros([1, 10, 580, 580])
+                    # Image Data Consistency
+                    sirt_recon = fanBeam.LACTSIRT(VOL=x_img.copy(), proj=PROJS_sparse, ang_num=SPARSE_VIEWS, iter_num=5)
+                    x_img = 0.5 * sirt_recon + 0.5 * x1_img_est
 
-                grad1_img = torch.from_numpy(grad1_img)
-                grad1_sino_60 = torch.from_numpy(grad1_sino_60)
-                grad1_sino_120 = torch.from_numpy(grad1_sino_120)
-                grad1_sino_240 = torch.from_numpy(grad1_sino_240)
-                grad1_sino_480 = torch.from_numpy(grad1_sino_480)
-                grad1_sino_580 = torch.from_numpy(grad1_sino_580)
+                    # -- Sinogram Domain Update --
+                    sino_from_img = fanBeam.FP(img=x_img.copy(), ang_num=FULL_VIEWS)
+                    with torch.no_grad():
+                        grad_sino = scorenet_sino(x0_sino, labels)
+                    noise_sino = torch.randn_like(x0_sino) * np.sqrt(step_size * 2)
+                    x0_sino.data = x0_sino.data + step_size * grad_sino + noise_sino
+                    x1_sino_est = np.mean(x0_sino.cpu().detach().numpy().squeeze(), axis=0) * maxdegrade_sino
 
-                # 通过神经网络获得图像域梯度（推理阶段不计算梯度）
-                with torch.no_grad():
-                    grad1_img = scorenet_image(x01_img, labels).detach()
+                    # Sinogram Data Consistency (using ground truth sparse views)
+                    mask_interval = FULL_VIEWS // SPARSE_VIEWS
+                    known_data_mask = matrix1_0(FULL_VIEWS, DETECTORS, mask_interval)
+                    unknown_data_mask = 1 - known_data_mask
+                    x_sino = PROJS_full_gt * known_data_mask + (0.5 * sino_from_img + 0.5 * x1_sino_est) * unknown_data_mask
 
-                # 预测步：梯度上升+加噪声
-                x0_img = x0_img + step_size * grad1_img.cpu()
-                x01_img = x0_img + noise1_img
-                x01_img = torch.tensor(x01_img.cuda(), dtype=torch.float32)
-                # 用numpy做归一化与均值
-                x0_img = np.array(x0_img.cpu().detach(), dtype=np.float32)
-                x1_img = np.squeeze(x0_img)
-                x1_img = np.mean(x1_img, axis=0)  # 跨通道取均值
-                x1max_img = x1_img * maxdegrade_img   # 反归一化到原数据范围
+                    # -- Feedback and Final Update for this step --
+                    if idx > SIGMA_LEVELS // 2: # Use refined sinogram more in later stages
+                        x_img = fanBeam.SIRT(VOL=x_img.copy(), proj=x_sino.squeeze(), ang_num=FULL_VIEWS, iter_num=5)
 
-                print(x1max_img.max())
-                sum_diff = x_img - x1max_img
+                    # -- Inject updated state back into samplers --
+                    x_rec_img_norm = np.clip(x_img / maxdegrade_img, 0, 1)
+                    x0_img.data = torch.tensor(np.tile(x_rec_img_norm[None, None, ...], (1, BATCH_CHANNELS, 1, 1)), dtype=torch.float32).cuda()
+                    
+                    x_rec_sino_norm = np.clip(x_sino / maxdegrade_sino, 0, 1)
+                    x0_sino.data = torch.tensor(np.tile(x_rec_sino_norm[None, None, ...], (1, BATCH_CHANNELS, 1, 1)), dtype=torch.float32).cuda()
 
-                # 经典物理模型（SIRT）与残差修正相结合的图像更新
-                x_new_img = 0.5 * fanBeam.LACTSIRT(VOL=x_img.copy(),
-                                               proj=PROJS, ang_num=90, iter_num=20) + 0.5 * (
-                                    x_img - sum_diff)
-                x_img = x_new_img
+            # --- Save result and calculate metrics for the current file ---
+            final_img_path = os.path.join(result_dir, f"{os.path.splitext(file_basename)[0]}_recon.png")
+            # Normalize to 0-255 for saving as PNG
+            recon_normalized = (x_img - x_img.min()) / (x_img.max() - x_img.min())
+            cv2.imwrite(final_img_path, np.uint8(recon_normalized * 255))
+            
+            # Use original ground truth for metrics
+            p = psnr(slice_img, x_img, data_range=slice_img.max() - slice_img.min())
+            s = ssim(slice_img, x_img, data_range=slice_img.max() - slice_img.min())
+            
+            PSNR_all_files.append(p)
+            SSIM_all_files.append(s)
 
-                # 最后一步保存/显示重建图像和中间sinogram
-                if step == n_steps_each - 1:
-                    x_sino_mid = fanBeam.FP(img=x_img.copy(), ang_num=580)
-                    plt.title(step, fontsize=30)
-                    plt.imshow(x_img, cmap='gray')
-                    plt.show()
-                    savemat('./result/' + str(idx) + 'image.mat', {'x_rec': x_new_img})
-                    savemat('./result/' + str(idx) + 'sino.mat', {'y_sino': x_sino_mid})
+            print(f"  File: {file_basename} -> PSNR: {p:.4f}, SSIM: {s:.4f}")
+            with open(test_log_file, 'a') as f:
+                f.write(f'{file_basename:<20}\t{p:.12f}\t{s:.12f}\n')
 
-                ###### sinogram 域采样/修正 ######
-                sino_from_img = fanBeam.FP(img=x_img.copy(), ang_num=580)
-                with torch.no_grad():
-                    grad1_sino_580 = scorenet_sino(x01_sino_580, labels).detach()
-                x0_sino_580 = x0_sino_580 + step_size * grad1_sino_580.cpu()
-                x01_sino_580 = x0_sino_580 + noise1_sino_580
-                x01_sino_580 = torch.tensor(x01_sino_580.cuda(), dtype=torch.float32)
-                x0_sino_580 = np.array(x0_sino_580.cpu().detach(), dtype=np.float32)
-                x1_sino_580 = np.squeeze(x0_sino_580)
-                x1_sino_580 = np.mean(x1_sino_580, axis=0)
-                x1max_sino_580 = x1_sino_580 * maxdegrade_sino
+        # =====================================================================
+        # 5. Final Report
+        # =====================================================================
+        avg_psnr = np.mean(PSNR_all_files)
+        std_psnr = np.std(PSNR_all_files)
+        avg_ssim = np.mean(SSIM_all_files)
+        std_ssim = np.std(SSIM_all_files)
+        
+        summary_line1 = f"\nAverage PSNR: {avg_psnr:.4f} (+/- {std_psnr:.4f})"
+        summary_line2 = f"Average SSIM: {avg_ssim:.4f} (+/- {std_ssim:.4f})"
+        print(summary_line1)
+        print(summary_line2)
 
-                # 结合稀疏角度投影和网络输出，动态融合sinogram
-                x_new_sino = PROJS580 * matrix1_0(580, 580, 20) + [
-                    (1 - ((step + 100 * idx) / 1200)) * sino_from_img * 0.2 + 0.2 * ((step + 100 * idx) / 1200) * (
-                        x1max_sino_580)] * (1 - matrix1_0(580, 580, 20)) + 0.8 * sino_from_img * (
-                                     1 - matrix1_0(580, 580, 20))
-
-                x_sino = x_new_sino.squeeze()
-                x_rec_sino_580 = x_sino.copy()
-                x_rec_sino_580 = x_rec_sino_580 / maxdegrade_sino
-                x_mid_sino_580 = np.zeros([1, 10, 580, 580], dtype=np.float32)
-                x_rec_sino_580 = np.expand_dims(x_rec_sino_580, 0)
-                x_mid_1_sino_580 = np.tile(x_rec_sino_580, [10, 1, 1])
-                x_mid_sino_580[0, :, :] = x_mid_1_sino_580
-                x0_sino_580 = torch.tensor(x_mid_sino_580, dtype=torch.float32)
-
-                # 在高sigma阶段，更多依赖神经网络sinogram修正，idx大时切换为SIRT
-                if idx > 111 :
-                    x_img = fanBeam.SIRT(VOL=x_img, proj=x_new_sino.squeeze(), ang_num=580,
-                                          iter_num=20)
-
-                x_new_sino = x_new_sino.squeeze()
-
-                # 再次投影得到新sinogram
-                x_rec_img = x_img.copy()
-                y_sino = fanBeam.FP(img=x_rec_img, ang_num=580)
-                x_rec_img = x_rec_img / maxdegrade_img
-
-                # clip强制截断，保证像素值0~1
-                x_mid_img = np.zeros([1, 10, 512, 512], dtype=np.float32)
-                x_rec_img = np.clip(x_rec_img, 0, 1)
-                x_rec_img = np.expand_dims(x_rec_img, 0)
-                x_mid_1_img = np.tile(x_rec_img, [10, 1, 1])
-                x_mid_img[0, :, :] = x_mid_1_img
-                x0_img = torch.tensor(x_mid_img, dtype=torch.float32)
-
-                end_in = time.time()
-                print("inner loop:%.2fs" % (end_in - start_in))
-                print("current {} step".format(step))
-
-            end_out = time.time()
-            print("outer iter:%.2fs" % (end_out - start_out))
-
+        with open(test_log_file, 'a') as f:
+            f.write('\n--- Summary ---\n')
+            f.write(summary_line1 + '\n')
+            f.write(summary_line2 + '\n')
+            
         plt.ioff()
-        end_end = time.time()
-        print("PSNR:%.2f" % (max_psnr), "SSIM:%.2f" % (max_ssim))
-        print("total time:%.2fs" % (end_end - start_start))
+        total_end_time = time.time()
+        print(f"\nTotal processing time: {(total_end_time - total_start_time)/60:.2f} minutes")

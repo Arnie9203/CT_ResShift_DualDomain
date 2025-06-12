@@ -31,7 +31,8 @@ randomData = [60, 120, 240]
 
 class trainset_loader(Dataset):
     def __init__(self):
-        data_dir = "/home/arnie/Desktop/npy_256x256_flattened"
+        data_dir = "/home/training_center/cyh_ct/CT/AAPM/3mm B30/all_img_gt/train"
+        # /home/training_center/cyh_ct/CT/AAPM/3mm B30/all_sino_gt_fullviews
         self.files_A = sorted(glob.glob(os.path.join(data_dir, '*.npy')))
         print(f"[trainset_loader] Found {len(self.files_A)} samples in {data_dir}")
         if len(self.files_A) == 0:
@@ -40,8 +41,9 @@ class trainset_loader(Dataset):
     def __getitem__(self, index):
         file_A = self.files_A[index]
         label_data = np.load(file_A).astype(np.float32)
-        proj = fanBeam.FP(label_data, 580)
-        label_data = proj
+        label_data = np.squeeze(label_data, axis=0)
+        # proj = fanBeam.FP(label_data, 580)
+        # label_data = proj
         data_array = (label_data - np.min(label_data)) / (np.max(label_data) - np.min(label_data))
         data_array = np.expand_dims(data_array, 2)
         data_array_10 = np.tile(data_array, (1, 1, 10))
@@ -54,7 +56,7 @@ class trainset_loader(Dataset):
 
 class testset_loader(Dataset):
     def __init__(self):
-        data_dir = "/home/arnie/Desktop/npy_256x256_flattened_test"
+        data_dir = "/home/training_center/cyh_ct/CT/AAPM/3mm B30/all_img_gt/val"
         self.files_A = sorted(glob.glob(os.path.join(data_dir, '*.npy')))
         print(f"[testset_loader] Found {len(self.files_A)} samples in {data_dir}")
         if len(self.files_A) == 0:
@@ -63,7 +65,7 @@ class testset_loader(Dataset):
     def __getitem__(self, index):
         file_A = self.files_A[index]
         label_data = np.load(file_A).astype(np.float32)
-        label_data = np.squeeze(label_data)
+        label_data = np.squeeze(label_data, axis=0)
         data_array = (label_data - np.min(label_data)) / (np.max(label_data) - np.min(label_data))
         data_array = np.expand_dims(data_array, 2)
         data_array_10 = np.tile(data_array, (1, 1, 10))

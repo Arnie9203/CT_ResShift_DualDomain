@@ -9,9 +9,9 @@ training:
   anneal_power: 2.0
 
 data:
-  dataset: "AAPM_SINO"     # 正弦图数据集 （在 runner 里会切换到加载 sinogram 的逻辑）
+  dataset: "AAPM"     # 正弦图数据集 （在 runner 里会切换到加载 sinogram 的逻辑）
   image_size: 580          # sinogram 大小 580×580
-  channels: 1              # 单通道 sinogram
+  channels: 10              # 单通道 sinogram
   logit_transform: false
   random_flip: false
 
